@@ -46,8 +46,10 @@ class _BLEScannerState extends State<BLEScanner> {
 
     setState(() {
       permissionsStatus = {
-        Permission.bluetoothScan: statuses[Permission.bluetoothScan]?.isGranted ?? false,
-        Permission.bluetoothConnect: statuses[Permission.bluetoothConnect]?.isGranted ?? false,
+        Permission.bluetoothScan:
+            statuses[Permission.bluetoothScan]?.isGranted ?? false,
+        Permission.bluetoothConnect:
+            statuses[Permission.bluetoothConnect]?.isGranted ?? false,
         Permission.location: statuses[Permission.location]?.isGranted ?? false,
       };
     });
@@ -121,7 +123,6 @@ class _BLEScannerState extends State<BLEScanner> {
           message = 'スキャン完了';
         }
       });
-
     } catch (e) {
       setState(() {
         isScanning = false;
@@ -167,19 +168,27 @@ class _BLEScannerState extends State<BLEScanner> {
                     'Bluetooth Scan パーミッション: ${permissionsStatus[Permission.bluetoothScan] == true ? '許可' : '未許可'}',
                     style: TextStyle(
                         fontSize: 16,
-                        color: permissionsStatus[Permission.bluetoothScan] == true ? Colors.green : Colors.red),
+                        color:
+                            permissionsStatus[Permission.bluetoothScan] == true
+                                ? Colors.green
+                                : Colors.red),
                   ),
                   Text(
                     'Bluetooth Connect パーミッション: ${permissionsStatus[Permission.bluetoothConnect] == true ? '許可' : '未許可'}',
                     style: TextStyle(
                         fontSize: 16,
-                        color: permissionsStatus[Permission.bluetoothConnect] == true ? Colors.green : Colors.red),
+                        color: permissionsStatus[Permission.bluetoothConnect] ==
+                                true
+                            ? Colors.green
+                            : Colors.red),
                   ),
                   Text(
                     '位置情報 パーミッション: ${permissionsStatus[Permission.location] == true ? '許可' : '未許可'}',
                     style: TextStyle(
                         fontSize: 16,
-                        color: permissionsStatus[Permission.location] == true ? Colors.green : Colors.red),
+                        color: permissionsStatus[Permission.location] == true
+                            ? Colors.green
+                            : Colors.red),
                   ),
                 ],
               ),
@@ -189,11 +198,16 @@ class _BLEScannerState extends State<BLEScanner> {
                 itemCount: scanResults.length,
                 itemBuilder: (context, index) {
                   final result = scanResults[index];
-                  final name = result.device.name.isNotEmpty ? result.device.name : '不明なデバイス';
-                  return ListTile(
-                    title: Text('名前: $name'),
-                    subtitle: Text('アドレス: ${result.device.id.id}, RSSI: ${result.rssi}'),
-                  );
+                  final name = result.device.name;
+                  if (name.isNotEmpty) {
+                    return ListTile(
+                      title: Text('名前: $name'),
+                      subtitle: Text(
+                          'アドレス: ${result.device.id.id}, RSSI: ${result.rssi}'),
+                    );
+                  } else {
+                    return const SizedBox.shrink();
+                  }
                 },
               ),
             ),
