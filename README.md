@@ -21,6 +21,6 @@ fvm flutter pub get
 fvmをインストールしていない場合：  
 flutterのバージョンが3.24.3であることを確認してください。  
 その後、下記のコマンドを実行してください。依存関係がインストールされます。
-```dart
+```bash
 flutter pub get
 ```
