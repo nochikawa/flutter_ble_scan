@@ -1,16 +1,26 @@
-# beacon_app
+# App BLE Scan
 
-A new Flutter project.
+## Version
+- Flutter 3.24.3
+- Dart 3.5.3
+- fvm 3.2.1  
 
-## Getting Started
+fvmのインストールは強制ではありませんが、その場合はバージョンに注意してください。
 
-This project is a starting point for a Flutter application.
+## Info
+fvmをインストールしている場合：
+```dart
+fvm install
+```
+このコマンドでFlutter SDKのバージョン(3.24.3)がなければインストールされます。  
+次に下記のコマンドを実行してください。依存関係がインストールされます。
+```dart
+fvm flutter pub get
+```
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+fvmをインストールしていない場合：
+flutterのバージョンが3.24.3であることを確認してください。  
+その後、下記のコマンドを実行してください。依存関係がインストールされます。
+```dart
+flutter pub get
+```
